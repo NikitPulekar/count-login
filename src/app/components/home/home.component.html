@@ -1,0 +1,41 @@
+<div class="container bg-dark text-center">
+    <div style="width: 80%; margin: 0 auto;">
+
+        <h2 style="text-transform: capitalize;padding:10px ; text-align: center;margin: 0 auto;background: #ff8400f0;">
+            {{userDetails.companyName}}</h2>
+        <div class="sub-title">
+            <span>
+                User: {{name | titlecase}}
+            </span>
+            <span>
+                Date: {{currentDate}}
+            </span>
+        </div>
+        <div class="sub-title">
+            <span style="text-transform: capitalize; background-color: #44942c;">
+                {{userDetails.itemname}}
+            </span>
+        </div>
+        <div *ngIf="products && products?.length > 1">
+            <select (change)="fetchDetails()" [(ngModel)]="itemSelected">
+                <option *ngFor="let item of products" [value]="item">{{item}}</option>
+            </select>
+        </div>
+    </div>
+
+    <div style="width:80%; margin: 0 auto; background: #2e8a7e;padding: 30px 20px;" class="text-center">
+        <div class="stats-container">
+            <div><span class="block">Machine Login Time:</span><span class="black-block">{{loginTime ||
+                    0}}</span><span class="block">{{ timeScene || ''}}</span></div>
+            <div><span class="block">Current Working hours:</span><span class="black-block">{{currentStats?.hour || 0}}:
+                    {{currentStats?.minutes
+                    ||0}}</span></div>
+            <div><span class="block">Todays Production Count:</span><span
+                    class="black-block">{{currentStats?.maskCreated || 0}}</span></div>
+            <div><span class="block">Month production:</span><span class="black-block">{{currentStats?.createdInMonth ||
+                    0}}</span></div>
+        </div>
+        <br>
+    </div>
+    <button type="submit" class="btn btn-primary submit" (click)="logOut()">Logout</button>
+</div>
