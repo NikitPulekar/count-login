@@ -43,5 +43,4 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-countSystem.pem
 deployment.sh
